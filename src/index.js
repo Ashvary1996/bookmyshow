@@ -49,11 +49,7 @@ app.get("/api/booking", async (req, res) => {
       .sort({ $natural: -1 })
       .limit(1);
 
-    if (lastBookings.length == 0) {
-      res.json({ message: "no previous booking found" });
-    } else {
       res.json(lastBookings);
-    }
   } catch (error) {
     res.status(500).json(error);
   }

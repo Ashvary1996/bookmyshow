@@ -29,14 +29,15 @@
     border-radius: 10px;
     font-size: 1em;
     color: white;
-    background: rgb(44, 209, 88);
-    background: -moz-linear-gradient(233deg, rgba(44, 209, 88, 1) 0%, rgba(44, 108, 224, 1) 100%);
-    background: -webkit-linear-gradient(233deg, rgba(44, 209, 88, 1) 0%, rgba(44, 108, 224, 1) 100%);
-    background: linear-gradient(233deg, rgba(44, 209, 88, 1) 0%, rgba(44, 108, 224, 1) 100%);
+    background: rgb(212, 142, 38);
+    background: -moz-linear-gradient(233deg, rgb(209, 66, 44) 0%, rgba(44, 108, 224, 1) 100%);
+    background: -webkit-linear-gradient(233deg, rgb(209, 146, 44) 0%, rgba(44, 108, 224, 1) 100%);
+    background: linear-gradient(233deg, rgb(197, 179, 15) 0%, rgba(44, 108, 224, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2cd158", endColorstr="#2c6ce0", GradientType=1);
     padding: 5px 15px;
     font-weight: 500;
 }
+
 
 .movie-column-selected, .seat-column-selected, .slot-column-selected {
     background: rgb(211, 115, 115);
@@ -55,5 +56,57 @@ input {
     padding: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    ;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    
+}
+
+.container {
+    display: flex;
+    margin-top: 10px;
+    background-color:rgb(232, 237, 237);
+    border-radius: 10px;
+    box-shadow: 5px;
+   
+}
+
+.column-1 {
+    flex: 70%;
+    
+    padding: 20px;
+}
+
+.column-2 {
+    flex: 30%;
+    margin-top: 35px;
+    padding: 20px;
+}
+
+btn-outline-primary{
+    color: aqua;
+    border-color: black;
+}
+
+.book{
+font-size: 25px;
+}
+
+.my{
+ background-color: rgb(204, 32, 32);
+ color: white;
+border-radius: 15px 15px 5px 5px;
+}
+
+.bold{
+    font-weight: bolder;
+}
+
+.seat{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(235, 66, 66);
 }
