@@ -44,15 +44,35 @@ const { name, value } = e.target;
 //######---submit data--########//
 const handleSubmit = async (e)=>{
   e.preventDefault();
-
-  await axios.post('http://localhost:8080/api/booking', state)
-  .then(() => {
-    alert('Ticket booked successfully');
-    window.location.reload();
-  })
-  .catch((error) => {
-    console.error('Error sending data:', error);
-  });
+  if(movie){
+    if(slot){
+      if(seat.A1 !== "0" || seat.A2 !== "0" || seat.A3 !== "0" || seat.A4 !== "0" || seat.D1 !== "0" || seat.D2 !== "0"  ){
+        await axios.post('http://localhost:8080/api/booking', state)
+        .then(() => {
+          alert('Ticket booked successfully');
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error('Error sending data:', error);
+        });
+      }
+      else 
+          {
+            alert("Please Select Seats");
+            return
+          }
+      }
+      else
+        {
+        alert("Please Select Time Slot")
+        return
+        }
+    }
+    else
+      {
+      alert("Please Select Movie")
+      return
+      }
 }
 
 //######------ fetching last booking detail---#######//
