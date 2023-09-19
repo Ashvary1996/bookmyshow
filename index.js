@@ -43,14 +43,22 @@ app.post("/api/booking", async (req, res) => {
 });
 /////////////////////   This API is for getting the Last Booking details  //////////////////////////////
 app.get("/api/booking", async (req, res) => {
-  try {
-    const lastBookings = await connection
-      .find()
-      .sort({ $natural: -1 })
-      .limit(1);
 
-      res.json(lastBookings);
-  } catch (error) {
+  try {
+    await connection.findOne({}).sort({ $natural: -1 })
+      .then((lastMovie) => {
+        if (lastMovie) {
+          res.status(200).json({
+            movie: lastMovie.movie,
+            seats: lastMovie.seats,
+            slot: lastMovie.slot
+          })
+        } else {
+          res.status(404).json({ message: 'no previous booking found.' })
+        }
+      })
+  }
+  catch (error) {
     res.status(500).json(error);
   }
 });

@@ -3,6 +3,7 @@ import "../styles/App.css";
 import "../styles/bootstrap.min.css";
 import { movies, slots, seats } from "./data";
 import axios from "axios";
+//import bookmyshow_logo from './bookmyshow_logo.png';
 
 const App = () => {
   const [lastBooking, setlastBooking] = useState({});
@@ -15,8 +16,8 @@ const App = () => {
     A3: "0",
     A4: "0",
     D1: "0",
-    D2: "0",
-  });
+    D2: "0"
+  })
   let movieTicket = {
     movie: movie,
     slot: slot,
@@ -29,40 +30,34 @@ const App = () => {
       D2: seat.D2,
     },
   };
-  // console.log(movieTicket);
+  // console.log("Movieticket", movieTicket);
 
-  // This handleseats function is for handeling seats at the time of booking movie. //
   const handleseats = (e) => {
     const { name, value } = e.target;
-    setSeat({ ...seat, [name]: value });
+    setSeat({ ...seat, [name]: value, });
     console.log(name, value);
-    // JSON.parse(localStorage.setItem("selectedMovie", [movie, slot, seat]));
+    localStorage.setItem("selectedMovie", [movie, slot, seat]);
   };
 
-  // The handleSubmit function is used to save movie,time,seats and saved the data in the database after completing all validation with the help of POST REQUEST. //
+
+
+  //######---submit data--########//
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (movie) {
       if (slot) {
-        if (
-          seat.A1 !== "0" ||
-          seat.A2 !== "0" ||
-          seat.A3 !== "0" ||
-          seat.A4 !== "0" ||
-          seat.D1 !== "0" ||
-          seat.D2 !== "0"
-        ) {
+        if (seat.A1 !== "0" || seat.A2 !== "0" || seat.A3 !== "0" || seat.A4 !== "0" || seat.D1 !== "0" || seat.D2 !== "0") {
           await axios
             .post("/api/booking", movieTicket)
             .then(() => {
               alert("Ticket booked successfully");
               setlastBooking(movieTicket);
-              setDisplay(true);
+              setDisplay(true)
             })
             .catch((error) => {
               console.error("Error sending data:", error);
             });
-          localStorage.clear("selectedMovie");
+          localStorage.clear("selectedMovie")
           setMovie("");
           setSlot("");
           setSeat({
@@ -71,7 +66,7 @@ const App = () => {
             A3: "0",
             A4: "0",
             D1: "0",
-            D2: "0",
+            D2: "0"
           });
 
           console.log(seat, seat.value);
@@ -87,16 +82,17 @@ const App = () => {
       alert("Please Select Movie");
       return;
     }
+
   };
 
-  // ------ Here we are using => useEffect for fetching the last booking details to show it and also we are saving the data in local storage so in case if user reload the page without booking the movieticket he will get the same data after that. ------//
-
+  //######------ fetching last booking detail---#######//
   useEffect(() => {
     const localmovie = localStorage.getItem("selectedMovie");
     if (localmovie) {
       setMovie(localmovie.split(",")[0]);
-      setSlot(localmovie.split(",")[1]);
-      // setSeat(localmovie.split(",")[2]);
+      setSlot(localmovie.split(",")[1])
+      // setSeat(localmovie.split(",")[2])
+      console.log(localmovie.split(",")[0], "this is from localdata")
     }
 
     axios
@@ -124,14 +120,12 @@ const App = () => {
           <h4 className="book">
             book<span className="my">my</span>show
           </h4>
-
           <form onSubmit={handleSubmit}>
             <div>
-              {/* movie selection  */}
+              {/* movie selection */}
               <div className="movie-row">
                 <h5>Select a movie</h5>
 
-                {/* // Generating all given Movies with the help of map / */}
                 {movies.map((smovie, index) => (
                   <div key={index} className="d-inline">
                     <input
@@ -142,14 +136,17 @@ const App = () => {
                       id={"smovie" + index}
                       autoComplete="off"
                       checked={movie === smovie}
+                      
                     />
                     <label
+
                       index={index}
                       className="btn btn-outline-danger m-2"
                       htmlFor={"smovie" + index}
+                      // checked={movie === smovie}
                       onClick={() => {
                         setMovie(smovie), console.log(smovie);
-                        localStorage.setItem("selectedMovie", [smovie, slot]);
+                        localStorage.setItem("selectedMovie", [smovie, slot, seat]);
                       }}
                     >
                       {smovie}
@@ -157,12 +154,11 @@ const App = () => {
                   </div>
                 ))}
               </div>
-
               {/* movie timing selection */}
+
               <div className="movie-row ">
                 <h5>Select a Time Slot</h5>
 
-                {/* // Generating all given Movies Time Slot with the help of map / */}
                 {slots.map((eslot, index) => (
                   <div key={index} className="d-inline">
                     <input
@@ -173,83 +169,81 @@ const App = () => {
                       id={"time" + index}
                       autoComplete="off"
                       checked={slot === eslot}
-                    />
 
+                    />
                     <label
                       className="btn btn-outline-danger m-2"
                       htmlFor={"time" + index}
+
                       onClick={() => {
-                        setSlot(eslot),
-                          console.log(eslot),
-                          localStorage.setItem("selectedMovie", [movie, eslot]);
-                      }}
-                    >
+                        setSlot(eslot), console.log(eslot),
+                          localStorage.setItem("selectedMovie", [movie, eslot, seat]);
+                      }}>
                       {eslot}
+
                     </label>
+
                   </div>
                 ))}
               </div>
 
-              {/* Theater seat selection */}
+              {/* theater seat selection */}
               <div className="movie-row">
                 <h5>Select the Seats</h5>
-
-                {/* // Generating all seats with the help of map / */}
-                {seats.map((eseat, index) => (
-                  <div key={index} className="d-inline">
-                    <div className="btn btn-outline-danger m-2">
-
-                      <label htmlFor={`seat-${eseat}`}>
-                        <h6> Type {eseat}</h6>
-                      </label>
+                {
+                  seats.map((eseat, index) => (
+                    <div key={index} className="d-inline"  >
 
                       <input
-                        type="number"
-                        max={10}
-                        id={`seat-${eseat}`}
-                        min={0}
-                        name={eseat}
-                        className="d-flex"
-                        onChange={handleseats }
-                        // onClick={() => localStorage.setItem("selectedMovie", [movie, slot, eseat])}
-                        value={seat[eseat]}
+                        type="radio"
+                        className="btn-check"
+                        name="seat_slot"
+                        id={"eseat" + index}
+                        autoComplete="off"
                         checked={seat === eseat}
-                      ></input>
+                        
+                      />
 
+                      <label className="btn btn-outline-danger m-2" htmlFor={"eseat" + index} >
+                        Type {eseat} <br />
+
+                        <input
+                          type="number"
+                          max={10}
+                          min={0}
+                          name={eseat}
+                          className="seatValue "
+                          onChange={handleseats}
+                          onClick={() => localStorage.setItem("selectedMovie", [movie, slot, eseat])}
+
+                          value={seat[eseat]}
+                        // checked={seat === seat[eseat]}
+
+                        ></input>
+                      </label>
 
                     </div>
-                    {/* <input
-                      type="radio"
-                      className="btn-check"
-                      name="seat_slot"
-                      id={"eseat" + index}
+                  ))
+                }
 
-                      autoComplete="off"
-                    // checked={seat === eseat}
-                    /> */}
-
-
-                  </div>
-                ))}
               </div>
             </div>
             <div className="book-button">
               <button>Book Now</button>
             </div>
           </form>
-        </div>
+        </div >
 
-        {/* This Sectioon is for Displaying The Last booking Details  */}
-        <div className="column-2">
+        {/* Last booking Detail */}
+        <div div className="column-2" >
           <div className="movie-row">
-            <h5>Last Booking Details</h5>
-
             {display == false ? (
-              <p>No Previous Booking Found</p>
+              <p>No record Found</p>
             ) : (
               <div>
+                <h5>Last Booking Details</h5>
                 <h6>Seats:</h6>
-                <h6>A1: {lastBooking.seats.A1}</h6>
+                <h6>A1: <span>{lastBooking.seats.A1}</span></h6>
                 <h6>A2: {lastBooking.seats.A2}</h6>
                 <h6>A3: {lastBooking.seats.A3}</h6>
                 <h6>A4: {lastBooking.seats.A4}</h6>
@@ -257,13 +251,49 @@ const App = () => {
                 <h6>D2: {lastBooking.seats.D2}</h6>
                 <h6>Slot: {lastBooking.slot}</h6>
                 <h6>Movie: {lastBooking.movie}</h6>
+
               </div>
             )}
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 };
 
 export default App;
+
+
+{seats.map((eseat, index) => (
+  <div key={index} className="d-inline">
+
+    <input
+      type="radio"
+      className="btn-check"
+      name="seat_slot"
+      id={"eseat" + index}
+
+      autoComplete="off"
+    // checked={seat === eseat}
+    />
+
+    <label
+      className="btn btn-outline-danger m-2"
+      htmlFor={"eseat" + index}
+    >
+      Type {eseat} <br />
+      <input
+        type="number"
+        max={10} ///////////////////IMP below Id ////////////
+        // id={"seat"+"-"+"eseat"} need to fix this according to given id
+        // id={`seat-${eseat}`}
+        min={0}
+        name={eseat}
+        className="seatValue "
+        onChange={handleseats}
+        // onClick={() => localStorage.setItem("selectedMovie", [movie, slot, eseat])}
+        value={seat[eseat]}
+      ></input>
+    </label>
+  </div>
+))}
