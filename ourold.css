@@ -125,7 +125,7 @@ btn-outline-primary {
 .red {
     color: rgb(210, 5, 5);
 }
-
+/* 
 .seatdiv:hover {
     color: rgb(204, 32, 32) !important;
     background: none !important;
@@ -134,9 +134,9 @@ btn-outline-primary {
 .seatdiv:active {
     color: white !important;
     background: rgb(204, 32, 32) !important;
-}
+} */
 
-
+/* 
 .seatdiv.active {
     background: rgb(204, 32, 32) !important;
-}
+} */
