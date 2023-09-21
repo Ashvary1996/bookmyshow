@@ -74,7 +74,7 @@ const App = () => {
             D2: "0",
           });
 
-          console.log(seat, seat.value);
+          // console.log(seat, seat.value);
         } else {
           alert("Please Select Seats");
           return;
@@ -119,13 +119,13 @@ const App = () => {
         console.error(err);
       });
   }, []);
-
+  // console.log(seat);
   return (
     <>
       <div className="container">
-        <div className="column-1">
+        <div className="selectColumn">
           {/* This Column 1 is for selecting The movie,timeslot and seats*/}
-          <h4 className="book">
+          <h4 className=" fs-3 mb-3 ">
             book<span className="my">my</span>show
           </h4>
 
@@ -137,29 +137,18 @@ const App = () => {
 
                 {/* Generating all given Movies with the help of map */}
                 {movies.map((smovie, index) => (
-                  <div key={index} className="movie-column">
-                    <input
-                      index={index}
-                      type="radio"
-                      className="btn-check"
-                      hidden
-                      name="movie_name"
-                      id={"smovie" + index}
-                      autoComplete="off"
-                      checked={movie === smovie}
-                      onChange={() => {
-                        setMovie(smovie),
-                          //  console.log(smovie);
-                          localStorage.setItem("selectedMovie", [smovie, slot]);
-                      }}
-                    />
-                    <label
-                      index={index}
-                      className="btn btn-outline-danger m-2"
-                      htmlFor={"smovie" + index}
-                    >
-                      {smovie}
-                    </label>
+                  <div
+                    key={index}
+                    className={`movie-column ${
+                      movie == smovie ? "movie-column-selected" : ""
+                    } `}
+                    onClick={() => {
+                      setMovie(smovie),
+                        //  console.log(smovie);
+                        localStorage.setItem("selectedMovie", [smovie, slot]);
+                    }}
+                  >
+                    <h6> {smovie}</h6>
                   </div>
                 ))}
               </div>
@@ -170,28 +159,18 @@ const App = () => {
 
                 {/* Generating all given Movies Time Slot with the help of map*/}
                 {slots.map((eslot, index) => (
-                  <div key={index} className="slot-column">
-                    <input
-                      index={index}
-                      type="radio"
-                      className="btn-check"
-                      name="time_slot"
-                      id={"time" + index}
-                      autoComplete="off"
-                      checked={slot === eslot}
-                      onChange={() => {
-                        setSlot(eslot),
-                          // console.log(eslot),
-                          localStorage.setItem("selectedMovie", [movie, eslot]);
-                      }}
-                    />
-
-                    <label
-                      className="btn btn-outline-danger m-2"
-                      htmlFor={"time" + index}
-                    >
-                      {eslot}
-                    </label>
+                  <div
+                    key={index}
+                    className={`slot-column ${
+                      slot == eslot ? "slot-column-selected" : ""
+                    } `}
+                    onClick={() => {
+                      setSlot(eslot),
+                        //  console.log(smovie);
+                        localStorage.setItem("selectedMovie", [movie, eslot]);
+                    }}
+                  >
+                    <h6>{eslot}</h6>
                   </div>
                 ))}
               </div>
@@ -203,26 +182,36 @@ const App = () => {
                 {/*Generating all seats with the help of map */}
                 {seats.map((eseat, index) => (
                   // <div key={index} className="d-inline">
-                  <div key={index} className="seat-column seatdiv">
+                  <div
+                    key={index}
+                    className={`seat-column ${
+                      movieTicket.seats[eseat] > 0 &&
+                      movieTicket.seats[eseat] === seat[eseat]
+                        ? "seat-column-selected"
+                        : ""
+                    } `}
+                    // className={"seat-column-selected"}
+                  >
                     <label htmlFor={`seat-${eseat}`}>
                       <h6> Type {eseat}</h6>
                     </label>
                     <input
+                      className="d-flex text-center"
+                      id={`seat-${eseat}`}
                       type="number"
                       max={10}
-                      id={`seat-${eseat}`}
                       min={0}
                       name={eseat}
-                      className="d-flex text-center p-1"
                       onChange={handleseats}
-                      onClick={() =>
+                      onClick={() => {
                         localStorage.setItem(
                           "localSeats",
                           JSON.stringify(seat)
-                        )
-                      }
+                        );
+                        // console.log(movieTicket.seats[eseat], seat[eseat]);
+                      }}
                       value={seat[eseat]}
-                    // checked={seat === seat}
+                      // checked={seat.seat === eseat}
                     ></input>
                   </div>
                   // </div>
@@ -236,8 +225,8 @@ const App = () => {
         </div>
 
         {/* This Sectioon is for Displaying The Last booking Details  */}
-        <div className="column-2 ">
-          <div className="movie-row">
+        <div className="bookingColumn">
+          <div className="last-order">
             <h5>Last Booking Details</h5>
 
             {display == false ? (
@@ -257,6 +246,8 @@ const App = () => {
             )}
           </div>
         </div>
+
+        {/* /////// End here //////////// */}
       </div>
     </>
   );

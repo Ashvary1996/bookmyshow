@@ -213,7 +213,7 @@ const App = () => {
                       id={`seat-${eseat}`}
                       min={0}
                       name={eseat}
-                      className="d-flex "
+                      className="d-flex text-center p-1"
                       onChange={handleseats}
                       onClick={() =>
                         localStorage.setItem(

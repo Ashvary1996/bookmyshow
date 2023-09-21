@@ -8,7 +8,6 @@
     padding: 10px 15px;
     line-height: 1px;
     border-radius: 5px;
-    /* box-shadow: 0 0 5px 5px; */
 }
 
 .movie-row,
@@ -47,7 +46,7 @@
 .seat-column-selected,
 .slot-column-selected {
     background: rgb(211, 115, 115);
-    /* box-shadow: 0 0 5px 5px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 input {
@@ -62,81 +61,41 @@ input {
     padding: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+/* ////////////       Custom CSS Starts     ////////////////////////////////// */
 
+.movie-column:hover,
+.seat-column:hover,
+.slot-column:hover {
+    cursor: pointer;
+    color:#330686;
 }
 
 .container {
+   
     display: flex;
-    margin-top: 10px;
-    background-color: rgb(211, 216, 241);
+    margin-top: 1.5%;
     border-radius: 10px;
     box-shadow: 5px;
-
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.column-1 {
+.selectColumn{
     flex: 70%;
-
-    padding: 20px;
+    padding: 10px;
 }
 
-.column-2 {
+.bookingColumn {
     flex: 30%;
     margin-top: 35px;
     padding: 20px;
-}
-
-btn-outline-primary {
-    color: aqua;
-    border-color: black;
-}
-
-.book {
-    font-size: 25px;
 }
 
 .my {
     background-color: rgb(204, 32, 32);
     color: white;
     border-radius: 15px 15px 5px 5px;
-}
-
-.bold {
-    font-weight: bolder;
-}
-
-.seat {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(235, 66, 66);
-}
-
-.black {
-    color: rgb(55, 1, 141);
-    font-weight: 500;
-}
-
-.red {
-    color: rgb(210, 5, 5);
-}
-
-.seatdiv:hover {
-    color: rgb(204, 32, 32) !important;
-    background: none !important;
-}
-
-.seatdiv:active {
-    color: white !important;
-    background: rgb(204, 32, 32) !important;
-}
-
-
-.seatdiv.active {
-    background: rgb(204, 32, 32) !important;
 }

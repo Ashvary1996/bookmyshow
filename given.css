@@ -1,4 +1,6 @@
-.movie-column, .seat-column, .slot-column {
+.movie-column,
+.seat-column,
+.slot-column {
     display: inline-block;
     margin: 5px;
     color: rgb(0, 0, 0);
@@ -9,7 +11,9 @@
     /* box-shadow: 0 0 5px 5px; */
 }
 
-.movie-row, .seat-row, .slot-row {
+.movie-row,
+.seat-row,
+.slot-row {
     border-radius: 10px;
     border: 1px black ridge;
     padding: 10px;
@@ -38,7 +42,9 @@
     font-weight: 500;
 }
 
-.movie-column-selected, .seat-column-selected, .slot-column-selected {
+.movie-column-selected,
+.seat-column-selected,
+.slot-column-selected {
     background: rgb(211, 115, 115);
     /* box-shadow: 0 0 5px 5px; */
 }
