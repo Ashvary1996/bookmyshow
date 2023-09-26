@@ -75,7 +75,6 @@ input {
 }
 
 .container {
-   
     display: flex;
     margin-top: 1.5%;
     border-radius: 10px;
@@ -99,3 +98,6 @@ input {
     color: white;
     border-radius: 15px 15px 5px 5px;
 }
+body::-webkit-scrollbar {
+    display: none;
+  }
