@@ -62,8 +62,9 @@ const BookMyShow = () => {
               console.error("Error sending data:", error);
             });
           // Clearing all selection after successfully booking.
-          localStorage.removeItem("selectedMovie");
-          localStorage.removeItem("localSeats");
+          localStorage.removeItem("movie");
+          localStorage.removeItem("slot");
+          localStorage.removeItem("seats");
           setMovie("");
           setSlot("");
           setSeat({
@@ -89,16 +90,20 @@ const BookMyShow = () => {
       return;
     }
   };
+  // name,movie,seats
 
   // <------ using => useEffect for fetching the last booking details to show it and also we are saving the data in local storage so in case if user reload the page without booking the movieticket he/she will get the same data after that. ------>//
 
   useEffect(() => {
-    const localmovie = localStorage.getItem("selectedMovie");
+    const localmovie = localStorage.getItem("movie");
     if (localmovie) {
-      setMovie(localmovie.split(",")[0]);
-      setSlot(localmovie.split(",")[1]);
+      setMovie(localmovie);
     }
-    const localSeats = JSON.parse(localStorage.getItem("localSeats"));
+    const localSlot = localStorage.getItem("slot");
+    if (localSlot) {
+      setSlot(localSlot);
+    }
+    const localSeats = JSON.parse(localStorage.getItem("seats"));
     if (localSeats) {
       setSeat(localSeats);
     }
@@ -142,8 +147,7 @@ const BookMyShow = () => {
                     movie == smovie ? "movie-column-selected" : ""
                   } `}
                   onClick={() => {
-                    setMovie(smovie),
-                      localStorage.setItem("selectedMovie", [smovie, slot]);
+                    setMovie(smovie), localStorage.setItem("movie", [smovie]);
                   }}
                 >
                   <h6> {smovie}</h6>
@@ -163,8 +167,7 @@ const BookMyShow = () => {
                     slot == eslot ? "slot-column-selected" : ""
                   } `}
                   onClick={() => {
-                    setSlot(eslot),
-                      localStorage.setItem("selectedMovie", [movie, eslot]);
+                    setSlot(eslot), localStorage.setItem("slot", eslot);
                   }}
                 >
                   <h6>{eslot}</h6>
@@ -200,7 +203,7 @@ const BookMyShow = () => {
                     name={eseat}
                     onChange={handleseats}
                     onClick={() => {
-                      localStorage.setItem("localSeats", JSON.stringify(seat));
+                      localStorage.setItem("seats", JSON.stringify(seat));
                     }}
                     value={seat[eseat]}
                   ></input>

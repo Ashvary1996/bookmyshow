@@ -39,15 +39,15 @@ routes.post("/booking", async (req, res) => {
       newBooking
         .save()
         .then(() => {
-          //Saving In The Database
-          res.status(200).send({
+          //Saving into database
+          res.status(200).json({
             booking: "Booking Successfull",
             bookingDetails: newBooking,
           });
         })
         .catch((err) => {
-            //If error in Saving to the Database
-          res.status(422).send({
+          //If error in Saving to the Database
+          res.status(422).json({
             booking: "Sorry Booking Not Completed / Internal Error",
             error: err,
           });
