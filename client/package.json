@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "proxy": "https://bookmyshow-90j1.onrender.com/",
+  "proxy": "https://bookmyshow124321.onrender.com/",
   "scripts": {
     "test": "cypress run  --headless --reporter mochawesome",
     "start": "webpack-dev-server --mode development --watch --open --hot --port 3000",
