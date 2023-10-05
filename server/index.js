@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const dotenv = require("dotenv").config();
 const port = process.env.PORT || 8080;
 const cors = require("cors");
 
@@ -14,10 +13,6 @@ app.use(cors());
 app.use("/api", require("./routes/NewBooking"));
 app.use("/api", require("./routes/LastBooking"));
 
-app.listen(process.env.PORT ? process.env.PORT : 8080, () =>
-  console.log(
-    `App listening on port ${process.env.PORT ? process.env.PORT : 8080}!`
-  )
-);
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 module.exports = app;

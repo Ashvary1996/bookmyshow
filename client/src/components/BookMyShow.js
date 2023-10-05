@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/App.css";
 import "../styles/bootstrap.min.css";
 import { movies, slots, seats } from "./data";
-import axios from "../axiosConfig";
+import axios from "axios";
 import LastBooking from "./LastBooking";
 
 const BookMyShow = () => {
