@@ -2,12 +2,13 @@
   "name": "node-server-testing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm i",
+  "main": "index.js",   
+  "scripts": { 
+    "build":"npm i",
     "test": "mocha 'testCases/*.test.js' --reporter mochawesome --recursive  --timeout 60000 --exit",
     "run": "node ./index.js",
-    "start": "nodemon index.js"
+    "start": "concurrently \"nodemon index.js\" \"cd.. && cd client && npm run start \"",
+    "dev": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.10",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22"
   }
 }
