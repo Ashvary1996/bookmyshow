@@ -10,14 +10,8 @@ app.use(cors());
 
 //app is using NewBooking and LastBooking Routes -->
 
-app.use(
-  "https://bookmyshowtest01.onrender.com/api",
-  require("./routes/NewBooking")
-);
-app.use(
-  "https://bookmyshowtest01.onrender.com/api",
-  require("./routes/LastBooking")
-);
+app.use("/api", require("./routes/NewBooking"));
+app.use("/api", require("./routes/LastBooking"));
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 
