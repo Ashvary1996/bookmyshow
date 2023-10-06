@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 let mongoose = require("mongoose");
 const { bookMovieSchema } = require("./schema");
 
-const mongoURI = process.env.MONGOURI;
+const mongoURI = process.env.MONGODBLIVE;
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
