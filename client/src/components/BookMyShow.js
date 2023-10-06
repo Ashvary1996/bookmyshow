@@ -52,7 +52,7 @@ const BookMyShow = () => {
           seat.D2 !== "0"
         ) {
           await axios
-            .post("https://bookmyshowtest01.onrender.com/api/booking", movieTicket)
+            .post("/api/booking", movieTicket)
             .then(() => {
               alert("Ticket booked successfully");
               setlastBooking(movieTicket);
@@ -109,7 +109,7 @@ const BookMyShow = () => {
     }
 
     axios
-      .get("https://bookmyshowtest01.onrender.com/api/booking")
+      .get("/api/booking")
       .then((response) => {
         let fetchData = response.data[0] || response.data;
         if (fetchData.length == 0) {

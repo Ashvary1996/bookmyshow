@@ -7,8 +7,10 @@ BookMyShow is a web application that allows users to book movie tickets.
             This Appliction have user friendly interface so users can select the available movie ,time slot and seats which is given on display.
             Our Project uses both local Storage and MongoDB for storing the selected data temporarly and permanently in database.
 
-Live Link :  
-(works only for frontend side to run fully do clone in your system)
+Live Link :-
+i) For frontend =  https://bookmyshow-3.netlify.app/ 
+ii) For backend =  https://bookmyshow-3.onrender.com/api/booking
+
 ## Technologies :
 This project uses the following technologies :-
 
@@ -26,7 +28,7 @@ This project uses the following technologies :-
            
 
 **Api's**   :-  
-            For Frontend =  http://localhost:3000/, 
+            For Frontend = http://localhost:3000/, 
             For Backend =  http://localhost:8080/api/booking 
 
               
@@ -113,5 +115,5 @@ if you are a new user and haven't done any booking previously.
 
 ## Feedback
 
-If you have any feedback, please reach out to us at ashvarygidian1996@gmail.com
+If you have any feedback, please reach out to us at ashvarygidian1996@gmail.com / rajravi0812@gmail.com / saptarshree96@gmail.com
 

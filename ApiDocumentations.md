@@ -139,11 +139,12 @@ Api Links/Endpoints
 For Frontend :-<br>
 	On  local System = http://localhost:3000
 	<br>
-	Live Link  	=  
+	Live Link  	=  https://bookmyshow-3.netlify.app/
 
 For Backend :- <br>
-	POST =  http://localhost:8080/api/booking  
-	GET  =  http://localhost:8080/api/booking  
+	POST Request =  http://localhost:8080/api/booking  
+	GET Request =  http://localhost:8080/api/booking  
+	Live Link = https://bookmyshow-3.onrender.com/api/booking
 
 =====================================================================
 
