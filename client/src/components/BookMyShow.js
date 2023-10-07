@@ -107,7 +107,7 @@ const BookMyShow = () => {
     if (localSeats) {
       setSeat(localSeats);
     }
-
+// this api is for details of last booking
     axios
       .get("/api/booking")
       .then((response) => {
@@ -186,6 +186,7 @@ const BookMyShow = () => {
                   className={`seat-column ${
                     movieTicket.seats[eseat] > 0 &&
                     movieTicket.seats[eseat] === seat[eseat]
+
                       ? "seat-column-selected"
                       : ""
                   } `}
@@ -202,8 +203,7 @@ const BookMyShow = () => {
                     min={0}
                     name={eseat}
                     onChange={handleseats}
-                    onClick={() => {
-                      localStorage.setItem("seats", JSON.stringify(seat));
+                    onClick={() => {localStorage.setItem("seats", JSON.stringify(seat));
                     }}
                     value={seat[eseat]}
                   ></input>
