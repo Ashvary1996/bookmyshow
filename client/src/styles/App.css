@@ -71,25 +71,26 @@ input {
 .seat-column:hover,
 .slot-column:hover {
     cursor: pointer;
-    color:#330686;
+    color: #330686;
 }
 
 .container {
     display: flex;
+    flex-direction: column;
     margin-top: 1.5%;
     border-radius: 10px;
     box-shadow: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.selectColumn{
-    flex: 70%;
+.selectColumn {
+    /* flex: 70%; */
     padding: 10px;
 }
 
 .bookingColumn {
-    flex: 30%;
-    margin-top: 35px;
+    /* flex: 30%; */
+    margin-top: 37.2px;
     padding: 20px;
 }
 
@@ -98,6 +99,20 @@ input {
     color: white;
     border-radius: 15px 15px 5px 5px;
 }
+
 body::-webkit-scrollbar {
     display: none;
-  }
+}
+
+
+ /*  For Small Screens */
+
+@media (min-width: 800px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+
+    }
+}
+
+ 

@@ -2,13 +2,16 @@
   "name": "node-server-testing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",   
-  "scripts": { 
-    "build":"npm i",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm i",
     "test": "mocha 'testCases/*.test.js' --reporter mochawesome --recursive  --timeout 60000 --exit",
     "run": "node ./index.js",
     "start": "concurrently \"nodemon index.js\" \"cd.. && cd client && npm run start \"",
     "dev": "nodemon ./index.js"
+  },
+  "engines": {
+    "node": ">=14.0.0 <16.0.0"
   },
   "author": "",
   "license": "ISC",
